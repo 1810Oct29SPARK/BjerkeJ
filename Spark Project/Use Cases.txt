@@ -1,0 +1,17 @@
+Spark Project Use Cases
+
+Theme: A social media website that does it all. 
+
+1. Twitter feed/ facebook feed/ instagram feed/ News feed... (possible posting)
+
+2. Youtube/google searches
+
+3. Messages to others
+
+4. Launch applications on your computer
+
+5. Stock/weather/gas status 
+
+6. Amazon/Wal-Mart purchases/searches
+
+7. Create Google Docs/Word Docs
