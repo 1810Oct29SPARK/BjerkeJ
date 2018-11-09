@@ -2,16 +2,16 @@ Spark Project Use Cases
 
 Theme: A social media website that does it all. 
 
-1. Twitter feed/ facebook feed/ instagram feed/ News feed... (possible posting)
+1. Twitter feed/ facebook feed/ instagram feed (possible posting)
 
 2. Youtube/google searches
 
-3. Messages to others
+3. 
 
-4. Launch applications on your computer
+4. News postings
 
-5. Stock/weather/gas status 
+5. Stock
 
-6. Amazon/Wal-Mart purchases/searches
+6. Weather
 
-7. Create Google Docs/Word Docs
+7. Quote of the Day

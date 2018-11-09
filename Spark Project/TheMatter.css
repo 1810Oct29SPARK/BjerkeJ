@@ -1,0 +1,82 @@
+/*Layout of Page*/
+header{
+    border: 10px ridge rgb(128, 0, 128);
+    background-color: rgb(255, 255, 255);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    height:125px;
+    top: 0;
+}
+.knockout {
+    background: url(TitlePurple.jpg); background-size: 1000px;
+    color: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bolder;
+    font-family: verdana;
+    width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+}
+body{
+    background-color: gainsboro; margin: 0px;
+}
+/* Tabs on the left*/
+#tabs{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    width: 60px;
+    background-color: rgba(128, 0, 128, 0.267);
+    border-right: 2px solid black;
+}
+li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: rgb(255, 255, 255);
+}
+
+li a:hover:not(.active) {
+    background-color: gainsboro; color: rgb(0, 0, 0);
+}
+li {
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+    
+li:last-child {
+    border-bottom: none;
+}
+
+/*Quotes and Searhes*/
+aside{
+    margin-right: 2%; margin-left: 2%;
+    float: right;
+    width: 20%;
+    text-align: center;
+}
+#quotedisplay{
+    color: rgb(49, 0, 49);
+    font: bolder;
+    font-size: 14px;
+}
+#Logo{
+    height: 25px; width: 110px;
+}
+.Search img{
+    height: 25px;
+    width: 100px;
+}
+
+/*Body of the site*/
+.main{
+    margin-left: 60px; padding: 10px;
+}
