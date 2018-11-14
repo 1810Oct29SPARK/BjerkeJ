@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Physics Worlds</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="TheMatter.css" />
+    <script src="TheMatter.js"></script>
+</head>
+<body>
+    <header>
+            <h1 class="knockout" style="font-size: 30px">
+                    <img src="atom.png" style="height: 40px; width: 40px; filter: invert(100%)"> The Matter That Matters
+                </h1>
+    </header>
+    <ul id="tabs">
+        <li> <a href="TheMatter.html"><img id="atom" src="atom.png"></a></li>
+        <li> <a class="active" href="TheMatterPG1.html">Calculator</a></li>
+        <li> <a href="TheMatterPG2.html">Physics Simulators </a></li>
+        <li> <a href="TheMatterPG3.html"> TED Talks</a></li>
+    </ul>
+    <div class = "main">
+        <div id = "calcTitle">
+            <h1>Calculator</h1>
+        </div>
+        <div class = "calc">    
+            <div id = "answer"></div>
+            <br>
+            <div id="expression">
+                    <input type="text" id = "exp" placeholder="Expression Here">
+            </div><br>
+            <div id="operation">
+                    <input type = "text" id = "ops" placeholder = "Operation Here">
+            </div><br>            
+            <button id="button">Calculate</button><br><br>
+            <table id= "table">
+                <thead>
+                    <tr> 
+                        <th>Operation</th>
+                        <th>What to type</th>
+                        <th>Examples</th>
+                        <th>Results</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Simplify</td>
+                        <td>simplify</td>
+                        <td>2^2 + 2(2)</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Factor</td>
+                        <td>factor</td>
+                        <td>x^2 + 2x</td>
+                        <td>x(x + 2)</td>
+                    </tr>
+                    <tr>
+                        <td>Derive</td>
+                        <td>derive</td>
+                        <td>x^2 + 2x</td>
+                        <td>2x + 2</td>
+                    </tr>
+                    <tr>
+                        <td>Integrate</td>
+                        <td>integrate</td>
+                        <td>x^2 + 2x</td>
+                        <td>1/3 x^3 + x^2 + C</td>
+                    </tr>
+                    <tr>
+                        <td>Find 0's</td>
+                        <td>zeroes</td>
+                        <td>x^2 + 2x</td>
+                        <td>[-2,0]</td>
+                    </tr>
+                    <tr>
+                        <td>Find Tangent</td>
+                        <td>tangent</td>
+                        <td>2 | x^3</td>
+                        <td>12x + -16</td>
+                    </tr>
+                    <tr>
+                        <td>Area Under Curve</td>
+                        <td>area</td>
+                        <td>2:4 | x^3</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>Cosine</td>
+                        <td>cos</td>
+                        <td>pi</td>
+                        <td>-1</td>
+                    </tr>
+                    <tr>
+                        <td>Sine</td>
+                        <td>sin</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Tangent</td>
+                        <td>tan</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Inverse Cosine</td>
+                        <td>arccos</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Inverse Sine</td>
+                        <td>arcsin</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Inverse Tangent</td>
+                        <td>arctan</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Absolute Value</td>
+                        <td>abs</td>
+                        <td>-1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Logarithm</td>
+                        <td>log</td>
+                        <td>2 | 8</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p> Please Note: This calculator will only work for simple expressions. If your results 
+                are "NaN" or "0" when expecting a specific value, please try to use a different expression. 
+            </p>
+        </div>
+    </div>
+</body>
+</html>

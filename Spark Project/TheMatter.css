@@ -1,26 +1,27 @@
 /*Layout of Page*/
 header{
     border: 10px ridge rgb(128, 0, 128);
-    background-color: rgb(255, 255, 255);
+    background: url(Earth1.jpg);
+    background-size: cover;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     height:125px;
     top: 0;
 }
 .knockout {
-    background: url(TitlePurple.jpg); background-size: 1000px;
+    background: url(TitlePurple.jpg); background-size: 300px;
     color: red;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     font-weight: bolder;
     font-family: verdana;
-    width: 1000px;
-    margin: 20px auto;
-    text-align: center;
+    width: 300px;
+    margin: 20px;
 }
 body{
     background-color: gainsboro; margin: 0px;
 }
+
 /* Tabs on the left*/
 #tabs{
     list-style-type: none;
@@ -29,7 +30,7 @@ body{
     height: 100%;
     position: fixed;
     overflow: auto;
-    width: 60px;
+    width: 125px;
     background-color: rgba(128, 0, 128, 0.267);
     border-right: 2px solid black;
 }
@@ -39,29 +40,35 @@ li a{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-size: 1.5em;
 }
-
 li a.active {
     background-color: rgb(255, 255, 255);
+    color: black;
 }
-
 li a:hover:not(.active) {
     background-color: gainsboro; color: rgb(0, 0, 0);
 }
 li {
     border-bottom: 2px solid rgb(0, 0, 0);
-}
-    
+} 
 li:last-child {
     border-bottom: none;
 }
+#atom{
+    height: 30px;
+    width: 30px;
 
-/*Quotes and Searhes*/
+}
+
+/*Quotes and Searches*/
 aside{
-    margin-right: 2%; margin-left: 2%;
+    margin-right: 2%; 
     float: right;
     width: 20%;
     text-align: center;
+    box-sizing: border-box;
+    flex-grow: 1;
 }
 #quotedisplay{
     color: rgb(49, 0, 49);
@@ -78,5 +85,64 @@ aside{
 
 /*Body of the site*/
 .main{
-    margin-left: 60px; padding: 10px;
+    padding-left: 125px;
+}
+.content{
+    width: 50%;
+    box-sizing: border-box;
+    flex-grow: 1;
+    float: left;
+}
+
+/*Einstein Calculator*/
+h1{
+    text-align: center;
+    font-size: 4em;
+    color: purple;
+}
+.calc{
+    text-align: center;
+}
+
+#table{
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+    padding: 15px;
+}
+
+#table tr:nth-child(even){
+    background-color: white;
+}
+
+#table th{
+    font-size: 1.5em;
+    background-color: rgba(128, 0, 128, 0.267);
+}
+
+#table th, #table td{
+    font-size: 1.25em;
+    border-bottom: 1px solid rgb(88, 88, 88);
+    width: 125px;
+    height: 1.25em;
+    border-collapse: collapse;
+}
+
+#answer{
+    font-size: 2.5em;
+    width: 300px;
+    border-bottom: 1px solid black;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*TED Talks*/
+.TED{
+    padding: 10px;
+    padding-left: 135px;
+}
+
+.TEDVid{
+    margin-left: auto;
+    margin-right: auto;
 }

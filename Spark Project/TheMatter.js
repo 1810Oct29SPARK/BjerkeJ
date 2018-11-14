@@ -1,11 +1,20 @@
-function quote(){
-    var randomnumber = Math.floor(Math.random() * (quotes.length));
-    document.getElementById('quotedisplay').innerHTML = quotes[randomnumber];
+const NewCalc =  "https://newton.now.sh";
+let calculator = function(){
+    let ops = document.getElementById('ops').value;
+    let exp = document.getElementById('exp').value;
+    NewURL = NewCalc + "/" + ops + "/" + exp;
+    fetch (NewURL).then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+    let results = data.result;
+    console.log(results);
+    document.getElementById('answer').innerHTML = results;
+    });
 }
 
-window.onload = quote;
 
-var quotes = [
+let quotes = [
 '“The important thing is not to stop questioning. Curiosity has its own reason for existence. One cannot help but be in awe when he contemplates the mysteries of eternity, of life, of the marvelous structure of reality. It is enough if one tries merely to comprehend a little of this mystery each day.― Albert Einstein',
 '“In the beginning there was nothing, which exploded.” ― Terry Pratchett, Lords and Ladies',
 '“Nothing happens until something moves.” ― Albert Einstein',
@@ -157,3 +166,19 @@ var quotes = [
 '“Instead, I opened my eyes to find the thing in front of my face, wafting dead horse breath across my chin and up my nose, its mouth like a gaping maw; its eyes, two giant wormholes, twisting and bending with some apparitional substance that could have been space and time if I’d known anything about physics.” ― Shannon Celebi, 1:32 P.M.',
 '“All have the ability to perceive and live in dimensional synthesis, yet they spend time with the sciences trying to separate these realms, splitting the worlds into minutia, seeking the god particle. They are searching high and low, \'out there\', for the source of it all, but no matter how many accelerators they build, no matter how far they go, they will never find the source ‘out there’ because the source is within” ― Juliana Loomer, Child of the Jotun',
 ]
+
+function quote(){
+    var randomnumber = Math.floor(Math.random() * (quotes.length));
+    document.getElementById('quotedisplay').innerHTML = quotes[randomnumber];
+}
+
+if(window.location.href.match('http://127.0.0.1:5500/gitrepos/BjerkeJ/Spark%20Project/TheMatterPG1.html') != null){
+    window.onload = function(){
+        document.getElementById('button').addEventListener("click", calculator);
+    }
+}
+if(window.location.href.match('http://127.0.0.1:5500/gitrepos/BjerkeJ/Spark%20Project/TheMatter.html') != null){
+    window.onload = function() {
+    quote();
+    }
+}
