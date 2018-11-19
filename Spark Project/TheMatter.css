@@ -4,7 +4,8 @@ header{
     background: url(Earth1.jpg);
     background-size: cover;
     position: -webkit-sticky; /* Safari */
-    position: sticky;
+    position: fixed;
+    width: 100%;
     height:125px;
     top: 0;
 }
@@ -19,7 +20,7 @@ header{
     margin: 20px;
 }
 body{
-    background-color: gainsboro; margin: 0px;
+    background-color: gainsboro; margin: 0px; margin-top: 145px;
 }
 
 /* Tabs on the left*/
@@ -85,7 +86,7 @@ aside{
 
 /*Body of the site*/
 .main{
-    padding-left: 125px;
+    padding-left: 125px; margin-top: 145px;
 }
 .content{
     width: 50%;
@@ -135,7 +136,17 @@ h1{
     margin-right: auto;
     margin-left: auto;
 }
-
+/*Physics Models*/
+#model{
+    padding-left: 125px;
+    text-align: center;
+}
+.game{
+    padding-left: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /*TED Talks*/
 .TED{
     padding: 10px;

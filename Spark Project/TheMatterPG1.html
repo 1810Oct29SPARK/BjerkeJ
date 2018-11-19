@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Physics Worlds</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="TheMatter.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="NewCssMatter.css" />
     <script src="TheMatter.js"></script>
 </head>
 <body>
     <header>
             <h1 class="knockout" style="font-size: 30px">
-                    <img src="atom.png" style="height: 40px; width: 40px; filter: invert(100%)"> The Matter That Matters
+                    <a href="TheMatter.html"><img src="atom.png" style="height: 40px; width: 40px; filter: invert(100%)"></a> The Matter That Matters
                 </h1>
     </header>
     <ul id="tabs">
-        <li> <a href="TheMatter.html"><img id="atom" src="atom.png"></a></li>
+        <li> <a href="TheMatter.html">Home</a></li>
         <li> <a class="active" href="TheMatterPG1.html">Calculator</a></li>
         <li> <a href="TheMatterPG2.html">Physics Simulators </a></li>
         <li> <a href="TheMatterPG3.html"> TED Talks</a></li>
@@ -27,12 +27,10 @@
         <div class = "calc">    
             <div id = "answer"></div>
             <br>
-            <div id="expression">
                     <input type="text" id = "exp" placeholder="Expression Here">
-            </div><br>
-            <div id="operation">
+            
                     <input type = "text" id = "ops" placeholder = "Operation Here">
-            </div><br>            
+            <br><br>
             <button id="button">Calculate</button><br><br>
             <table id= "table">
                 <thead>
@@ -137,8 +135,9 @@
                 </tbody>
             </table>
             <p> Please Note: This calculator will only work for simple expressions. If your results 
-                are "NaN" or "0" when expecting a specific value, please try to use a different expression. 
+                are "NaN" or "0" when expecting a specific value, please try to use a different expression or format.
             </p>
+        </div>
         </div>
     </div>
 </body>

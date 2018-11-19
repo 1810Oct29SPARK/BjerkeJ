@@ -4,23 +4,137 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>The Matter That Matters</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="TheMatter.css" />
+    <meta name="viewport" content="width=device-width", initial-scale=1">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="NewCssMatter.css" />
+    <div>
     <script src="TheMatter.js"></script>
+    <script src="../../../Physics Body Models/matter-js/build/matter.js"></script>
+    <script src="../../../Physics Body Models/matter-js/demo/js/Demo.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/airFriction.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/avalanche.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/ballPool.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/bridge.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/broadphase.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/car.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/catapult.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/chains.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/circleStack.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/cloth.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/collisionFiltering.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/compositeManipulation.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/compound.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/compoundStack.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/concave.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/constraints.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/doublePendulum.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/events.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/friction.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/gravity.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/gyro.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/manipulation.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/mixed.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/newtonsCradle.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/pyramid.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/ragdoll.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/raycasting.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/restitution.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/rounded.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/sensors.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/sleeping.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/slingshot.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/softBody.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/stack.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/staticFriction.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/stress.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/stress2.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/timescale.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/views.js"></script>
+    <script src="../../../Physics Body Models/matter-js/examples/wreckingBall.js"></script>
+    </div>
 </head>
 <body>
     <header>
             <h1 class="knockout" style="font-size: 30px">
-                    <img src="atom.png" style="height: 40px; width: 40px; filter: invert(100%)"> The Matter That Matters
+                    <a href="TheMatter.html"><img src="atom.png" style="height: 40px; width: 40px; filter: invert(100%)"></a> The Matter That Matters
                 </h1>
     </header>
     <ul id="tabs">
-        <li> <a href="TheMatter.html"><img id = "atom" src="atom.png"></a></li>
+        <li> <a href="TheMatter.html">Home</a></li>
         <li> <a href="TheMatterPG1.html">Calculator</a></li>
         <li> <a class = "active" href="TheMatterPG2.html">Physics Simulators </a></li>
         <li> <a href="TheMatterPG3.html"> TED Talks</a></li>
     </ul>
     <div class="main">
+        <div id="select">
+        <select id="selection" name="modes" style="display: block;">
+            <option value="0">Air Friction</option>
+            <option value="1">Avalanche</option>
+            <option value="2">Ball Pool</option>
+            <option value="3">Bridge</option>
+            <option value="4">Broadphase</option>
+            <option value="5">Cars</option>
+            <option value="6">Catapult</option>
+            <option value="7">Chains</option>
+            <option value="8">Circle Stacks</option>
+            <option value="9">Cloths</option>
+            <option value="10">Collision Filtering</option>
+            <option value="11">Composite Manipulation</option>
+            <option value="12">Compound</option>
+            <option value="13">Compound Stack</option>
+            <option value="14">Concave Shapes</option>
+            <option value="15">Constrains</option>
+            <option value="16">Double Pendulum</option>
+            <option value="17">Events</option>
+            <option value="18">Friction</option>
+            <option value="19">Gravity</option>
+            <option value="20">Gyro</option>
+            <option value="21">Manipulation</option>
+            <option value="22">Mixed Shapes</option>
+            <option value="23">Newton's Cradle</option>
+            <option value="24">Pyramid</option>
+            <option value="25">Ragdoll</option>
+            <option value="26">Raycasting</option>
+            <option value="27">Restitution</option>
+            <option value="28">Rounded</option>
+            <option value="29">Sensors</option>
+            <option value="30">Sleeping</option>
+            <option value="31">Slingshot</option>
+            <option value="32">Softbody</option>
+            <option value="33">Stacks</option>
+            <option value="34">Static Friction</option>
+            <option value="35">Stress Test</option>
+            <option value="36">Stress Test 2</option>
+            <option value="37">Timescale</option>
+            <option value="38">Views</option>
+            <option value="39">Wreckingball</option>
+        </select>
+        <button id="continue" value="Continue">Continue</button>
+        <button id="refresh" value="Refresh">Refresh</button>
+        </div>
+        <p style="text-align: center">Please select the simulation you would like to see then click 'Continue'. Before selecting a new simulation, click 'Refresh'.</p>
+        <div id="model"></div>
     </div>
+    <script>
+    var physmod = ["Example.airFriction()","Example.avalanche()","Example.ballPool()","Example.bridge()","Example.broadphase()","Example.car()","Example.catapult()","Example.chains()",
+            "Example.circleStack()","Example.cloth()","Example.collisionFiltering()","Example.compositeManipulation()",
+            "Example.compound()","Example.compoundStack()","Example.concave()","Example.constraints()","Example.doublePendulum()",
+            "Example.events()","Example.friction()","Example.gravity()","Example.gyro()","Example.manipulation()",
+            "Example.mixed()","Example.newtonsCradle()","Example.pyramid()","Example.ragdoll()","Example.raycasting()","Example.restitution()",
+            "Example.rounded()","Example.sensors()","Example.sleeping()","Example.slingshot()","Example.softBody()","Example.stack()",
+            "Example.staticFriction()","Example.stress()","Example.stress2()","Example.timescale()","Example.views()","Example.wreckingBall()"];
+    </script>
+    <script id="game">
+    $("#continue").click(function(){
+        var values = $('#selection').find(":selected").val();
+        eval(physmod[values]); 
+    });
+    $("#refresh").click(function(){
+        window.location.reload();
+    })
+    </script>
 </body>
 </html>
