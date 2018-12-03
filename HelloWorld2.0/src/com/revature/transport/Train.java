@@ -1,5 +1,7 @@
 package com.revature.transport;
 
+import com.revature.transport.*;
+
 public class Train extends Vehicle {
 	
 	public Train() {
@@ -12,11 +14,15 @@ public class Train extends Vehicle {
 		this.carLength = carLength;
 	}
 
-	double maxSpeed;
-	int carLength;
+	protected double maxSpeed;
+	protected int carLength;
+	protected boolean onRails;
 	
 	@Override
-	public void move() {
+	public void move() throws MaintenanceException{
+		if(!this.onRails) {
+			throw new MaintenanceException("Train is derailed");
+		}
 		System.out.println("The train is moving");
 
 	}

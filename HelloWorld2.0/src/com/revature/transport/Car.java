@@ -1,6 +1,8 @@
 package com.revature.transport;
 
-public class Car extends Vehicle implements Steerable{
+import com.revature.transport.*;
+
+public class Car extends Vehicle implements Steerable {
 
 	public Car(int yearMan, String model, String make, double milesSinceOil) {
 		super();
@@ -25,7 +27,10 @@ public class Car extends Vehicle implements Steerable{
 	private double milesSinceOil;
 
 	@Override
-	public void move() {
+	public void move() throws MaintenanceException {
+		if (this.milesSinceOil >= milesbtwOil) {
+			throw new MaintenanceException("Change your oil");
+		}
 		System.out.println("Car is moving");
 	}
 

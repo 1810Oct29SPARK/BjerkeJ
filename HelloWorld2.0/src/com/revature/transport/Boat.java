@@ -1,5 +1,7 @@
 package com.revature.transport;
 
+import com.revature.transport.*;
+
 public class Boat extends Vehicle implements Steerable {
 
 	public Boat(String color, double hullLength) {
@@ -16,9 +18,13 @@ public class Boat extends Vehicle implements Steerable {
 
 	protected String color;
 	protected double hullLength;
+	protected boolean hasHole;
 
 	@Override
-	public void move() {
+	public void move() throws MaintenanceException{
+		if(this.hasHole) {
+			throw new MaintenanceException("unseaworthy");
+		}
 		System.out.println("Boat is moving");
 	}
 
@@ -53,6 +59,14 @@ public class Boat extends Vehicle implements Steerable {
 	public void turnLeft() {
 		System.out.println("Turn wheel counter-clockwise");
 		
+	}
+
+	public boolean isHasHole() {
+		return hasHole;
+	}
+
+	public void setHasHole(boolean hasHole) {
+		this.hasHole = hasHole;
 	}
 
 }
