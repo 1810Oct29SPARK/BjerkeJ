@@ -1,0 +1,17 @@
+.btn.btn-outline-light.my-2.my-sm-2.text-white:hover {
+    background-color: gray;
+}
+
+body {
+    padding-top: 54px;
+  }
+  
+  @media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+  }
+  
+  .card {
+    height: 100%;
+  }

@@ -12,7 +12,7 @@ public interface ReimbursementDAO {
 	public void addNewReimbursement(int employeeId, String type, String description, Blob image, double amount);
 	public void approveReimbursement(int x);
 	public Date checkReimbursementStatus(int x);
-	public void updateReimbursement(String column, String update, int x);
+	public void updateReimbursement(int employeeId, String type, String description, Blob image, Double amount);
 	public void deleteReimbursement(int x);
 	
 }

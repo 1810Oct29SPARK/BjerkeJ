@@ -13,20 +13,17 @@ import beans.Employee;
 import util.ConnectionUtil;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
-	
+
 	private static final String filename = "connection.properties";
 
 	public List<Employee> getEmployees() {
 		List<Employee> e1 = new ArrayList<Employee>();
-		// try-with-resources.. con will be closed at the end of the block
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			// write a join which unifies Bear, Cave, and BearType into a ResultSet
-			// map the ResultSet's entries onto a list of Bear objects
 			String sql = "SELECT * FROM EMPLOYEE";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				int employeeId  = rs.getInt("EMPLOYEEID");
+			while (rs.next()) {
+				int employeeId = rs.getInt("EMPLOYEEID");
 				String firstname = rs.getString("FIRSTNAME");
 				String lastname = rs.getString("LASTNAME");
 				String middleInitial = rs.getString("MIDDLEINITIAL");
@@ -37,8 +34,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				int zipcode = rs.getInt("ZIPCODE");
 				String email = rs.getString("EMAIL");
 				String phone = rs.getString("PHONE");
-
-				e1.add(new Employee(employeeId, firstname, lastname, middleInitial, title, directManager, birthdate, address, zipcode, email, phone));
+				e1.add(new Employee(employeeId, firstname, lastname, middleInitial, title, directManager, birthdate,
+						address, zipcode, email, phone));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,11 +45,51 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return e1;
 	}
 
-	public void addNewEmployee(String firstName, String lastName, String middleInitial, String title, int directManager, String birthdate, String address, int zipcode, String email, String phone) {
+	public void updateEmployee(int x, String firstName, String lastName, String middleInitial, String title,
+			String address, int zipcode, String email, String phone) {
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			// write a join which unifies Bear, Cave, and BearType into a ResultSet
-			// map the ResultSet's entries onto a list of Bear objects
-			String sql = "INSERT INTO EMPLOYEE E VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "UPDATE EMPLOYEE SET " + "FIRSTNAME = ?, " + "LASTNAME = ?, " + "MIDDLEINITIAL = ?, "
+					+ "TITLE = ?, " + "ADDRESS = ?, " + "ZIPCODE = ?, " + "EMAIL = ?, " + "PHONE = ?"
+					+ " WHERE EMPLOYEEID = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+			stmt.setString(3, middleInitial);
+			stmt.setString(4, title);
+			stmt.setString(5, address);
+			stmt.setInt(6, zipcode);
+			stmt.setString(7, email);
+			stmt.setString(8, phone);
+			stmt.setInt(9, x);
+			stmt.executeUpdate();
+			System.out.println("Successfully updated");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void deleteEmployee(int x) {
+		try (Connection con = ConnectionUtil.getConnection(filename)) {
+			String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEEID = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, x);
+			stmt.executeUpdate();
+			System.out.println("Successfully deleted");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void addNewEmployee(String firstName, String lastName, String middleInitial, String title, int directManager,
+			String birthdate, String address, int zipcode, String email, String phone) {
+		try (Connection con = ConnectionUtil.getConnection(filename)) {
+			String sql = "INSERT INTO EMPLOYEE(FIRSTNAME, LASTNAME, MIDDLEINITIAL, TITLE, DIRECTMANAGER, BIRTHDATE, ADDRESS, ZIPCODE, EMAIL, PHONE) VALUES"
+					+ " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, firstName);
 			stmt.setString(2, lastName);
@@ -65,39 +102,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			stmt.setString(9, email);
 			stmt.setString(10, phone);
 			stmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void updateEmployee(String column, String update, int x) {
-		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			// write a join which unifies Bear, Cave, and BearType into a ResultSet
-			// map the ResultSet's entries onto a list of Bear objects
-			String sql = "UPDATE TABLE EMPLOYEE E SET ? = ? WHERE EMPLOYEEID = ?;";
-			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, column);
-			stmt.setString(2, update);
-			stmt.setInt(3, x);
-
-			stmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		}
-	
-	public void deleteEmployee(int x) {
-		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			// write a join which unifies Bear, Cave, and BearType into a ResultSet
-			// map the ResultSet's entries onto a list of Bear objects
-			String sql = "DELETE * FROM EMPLOYEE WHERE EMPLOYEEID = ?;";
-			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setInt(1, x);
-			stmt.executeUpdate();
+			System.out.println("Successful Insertion");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
