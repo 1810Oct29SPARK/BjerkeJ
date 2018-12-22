@@ -1,24 +1,33 @@
 package services;
 
 import beans.Credentials;
-import beans.User;
+import beans.Employee;
+import dao.CredentialsDAO;
+import dao.CredentialsDAOImpl;
+import dao.EmployeeDAO;
+import dao.EmployeeDAOImpl;
 
 public class AuthenticationService {
+
+	CredentialsDAO c = new CredentialsDAOImpl();
+	EmployeeDAO e = new EmployeeDAOImpl();
 
 	public AuthenticationService() {
 	}
 
-	public User isValidUser(Credentials credentials) {
-		User u = null;
+	public Employee isValidUser(Credentials credentials) {
 		String username = credentials.getUsername();
 		String password = credentials.getPassword();
-		//take credentials and return user to which they belong if it exists
-		if(username != null && password != null) {
-			if(username.equals("JerBjer") && password.equals("12345")) {
-				u = new User(10061, username, "Jeremy", "Bjerke", "jerCEO@company.com");
+		Credentials cl = c.login(username, password);
+		int id = cl.getEmployeeId();
+		System.out.println(id);
+		Employee empl = null;
+		if (username != null && password != null) {
+			if (username.equals(cl.getUsername()) && password.equals(cl.getPassword())) {
+				empl =  e.getEmployee(id);
+				System.out.println(empl);
 			}
 		}
-		return null;
+		return empl;
 	}
-	
 }

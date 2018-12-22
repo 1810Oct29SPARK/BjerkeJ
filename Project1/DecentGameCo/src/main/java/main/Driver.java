@@ -32,20 +32,21 @@ public class Driver {
 //		for(Credentials c : userCredentials) {
 //			System.out.println(c);
 //		}
+		EmployeeDAO employee = new EmployeeDAOImpl();
+		Employee e = employee.getEmployee(10061);
+		System.out.println(e);
 //		CredentialsDAO addNewCredentials = new CredentialsDAOImpl();
 //		addNewCredentials.addNewCredentials("JerBjer", "12345", 10061);
 //		
 //		CredentialsDAO deleteCredentials = new CredentialsDAOImpl();
 //		deleteCredentials.deleteCredentials(10087);
-		
+//		
 //		CredentialsDAO updateCredentials = new CredentialsDAOImpl();
 //		updateCredentials.updateCredentials("USERNAME", "Jackstuff", 10087);
 //		
 //		CredentialsDAO login = new CredentialsDAOImpl();
-//		List<Credentials> login1 = login.login("JerBjer", "12345");
-//		for( Credentials c : login1) {
-//			System.out.println(c);
-//		}
+//		Credentials login1 = login.login("JerBjer", "12345");
+//		System.out.println(login1);
 //		
 //		ReimbursementDAO listReimbursements = new ReimbursementDAOImpl();
 //		List<Reimbursement> reimbursements = listReimbursements.getReimbursements();
@@ -55,7 +56,7 @@ public class Driver {
 //		ReimbursementDAO insertReimbursement = new ReimbursementDAOImpl();
 //		insertReimbursement.addNewReimbursement(10022, "Purchase", "I bought Stuff", null, 109.93);
 //		ReimbursementDAO checkReimbursement = new ReimbursementDAOImpl();
-		
+//		
 //		ReimbursementDAO approveReimbursement = new ReimbursementDAOImpl();
 //		approveReimbursement.approveReimbursement(1);
 //		
@@ -76,9 +77,7 @@ public class Driver {
 //		
 //		EmployeeDAO deleteEmployee = new EmployeeDAOImpl();
 //		deleteEmployee.deleteEmployee(10087);
-		
-		
-		
+
 	}
 
 	static void init() {

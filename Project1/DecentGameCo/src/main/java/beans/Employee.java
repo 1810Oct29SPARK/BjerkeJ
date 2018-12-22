@@ -17,6 +17,18 @@ public class Employee {
 		this.email = email;
 		this.phone = phone;
 	}
+	
+	public Employee(int employeeId, String firstname, String lastname, String email) {
+		super();
+		this.employeeId = employeeId;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+	
+	public Employee() {
+		super();
+	}
 
 	private int employeeId;
 	private String firstname;

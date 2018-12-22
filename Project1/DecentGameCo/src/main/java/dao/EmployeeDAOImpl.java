@@ -44,6 +44,36 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 		return e1;
 	}
+	
+	public Employee getEmployee(int employeeId) {
+		Employee e1 = new Employee();
+		try (Connection con = ConnectionUtil.getConnection(filename)) {
+			String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEEID = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, employeeId);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt("EMPLOYEEID");
+				String firstname = rs.getString("FIRSTNAME");
+				String lastname = rs.getString("LASTNAME");
+				String middleInitial = rs.getString("MIDDLEINITIAL");
+				String title = rs.getString("TITLE");
+				int directManager = rs.getInt("DIRECTMANAGER");
+				String birthdate = rs.getString("BIRTHDATE");
+				String address = rs.getString("ADDRESS");
+				int zipcode = rs.getInt("ZIPCODE");
+				String email = rs.getString("EMAIL");
+				String phone = rs.getString("PHONE");
+				e1 = new Employee(id, firstname, lastname, middleInitial, title, directManager, birthdate,
+						address, zipcode, email, phone);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return e1;
+	}
 
 	public void updateEmployee(int x, String firstName, String lastName, String middleInitial, String title,
 			String address, int zipcode, String email, String phone) {

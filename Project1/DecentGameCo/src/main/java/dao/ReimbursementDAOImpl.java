@@ -1,5 +1,7 @@
 package dao;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -55,7 +57,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				r = rs.getDate("DATEAPROVED");
-			System.out.println(r);
+				System.out.println(r);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -119,13 +121,16 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public void addNewReimbursement(int employeeId, String type, String description, Blob image, double amount) {
 		LocalDate today = LocalDate.now();
 		String date = today.toString();
+		String location = image.toString();
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
+			File blob = new File(location);
+			FileInputStream in = new FileInputStream(blob);
 			String sql = "INSERT INTO REIMBURSEMENTS(EMPLOYEEID, TYPE, DESCRIPTION, IMAGE, AMOUNT, DATESUBMITTED) VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, employeeId);
 			stmt.setString(2, type);
 			stmt.setString(3, description);
-			stmt.setBinaryStream(4, (InputStream) image);
+			stmt.setBinaryStream(4, in);
 			stmt.setDouble(5, amount);
 			stmt.setString(6, date);
 			stmt.executeQuery();

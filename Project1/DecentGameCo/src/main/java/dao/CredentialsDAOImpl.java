@@ -36,19 +36,40 @@ public class CredentialsDAOImpl implements CredentialsDAO {
 		return cl;
 	}
 
-	public List<Credentials> login(String username, String password) {
-		List<Credentials> cl = new ArrayList<Credentials>();
+//	public Credentials login(String username, String password) {
+//		Credentials cl = null;
+//		try (Connection con = ConnectionUtil.getConnection(filename)) {
+//			String sql = "SELECT * FROM CREDENTIALS WHERE USERNAME = ?";
+//			PreparedStatement stmt = con.prepareStatement(sql);
+//			stmt.setString(1, username);
+//			stmt.setString(2, password);
+//			ResultSet rs = stmt.executeQuery();
+//			while (rs.next()) {
+//				String username1 = rs.getString("USERNAME");
+//				String password1 = rs.getString("PASSWORD");
+//				int id = rs.getInt("EMPLOYEEID");
+//				cl = new Credentials(username1, password1, id);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return cl;
+//	}
+	public Credentials login(String username, String password) {
+		Credentials cl = new Credentials(null, null, 0);
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "SELECT * FROM CREDENTIALS WHERE USERNAME = ? AND PASSWORD = ?";
+			String sql = "SELECT * FROM CREDENTIALS WHERE USERNAME = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, username);
-			stmt.setString(2, password);
+//			stmt.setString(2, password);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				int employeeId = rs.getInt("EMPLOYEEID");
 				String username1 = rs.getString("USERNAME");
 				String password1 = rs.getString("PASSWORD");
-				cl.add(new Credentials(username1, password1, employeeId));
+				int id = rs.getInt("EMPLOYEEID");
+				cl = new Credentials(username1, password1, id);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebServlet("/Profile")
-public class Profile extends HttpServlet {
+@WebServlet("/Account")
+public class Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Profile() {
+    public Account() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("employeeId") != null) {
-			request.getRequestDispatcher("profile.html").forward(request, response);
+			request.getRequestDispatcher("LoggedInHTML/Account.html").forward(request, response);
 		} else {
-			response.sendRedirect("home");
+			response.sendRedirect("HTML/Home.html");
 		}
 	}
 
