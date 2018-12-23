@@ -8,14 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" tyle="text/css" href="../CCS.css">
-    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="javascript.js"></script>
 </head>
 
 <body>
     <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="Home.html">Decent Games Co</a>
+            <a class="navbar-brand" href="Home">Decent Games Co</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,107 +29,83 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="LHome.html">Home</a>
+                        <a class="nav-link" href="LHome">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="LStore.html">Store</a>
+                        <a class="nav-link" href="LStore">Store</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="LStudios.html">Studios</a>
+                        <a class="nav-link" href="LStudios">Studios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="LAbout.html">About</a>
+                        <a class="nav-link" href="LAbout">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="LFAQ.html">FAQ</a>
+                        <a class="nav-link" href="LFAQ">FAQ</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="Account.html">Account <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="Account">Account <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Manager">Managers</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-light my-2 my-sm-2 text-white" type="button" onclick="window.location.href = '../HTML/Home.html'"
-                        data-toggle="tooltip" data-placement="bottom" title="Log Out">Log Out</button>
+                <form class="form-inline my-2 my-lg-0" action="SignOut" method="GET">
+                    <button class="btn btn-outline-light my-2 my-sm-2 text-white" type="submit" data-toggle="tooltip"
+                        data-placement="bottom" value="submit" title="Log Out">Log Out</button>
                 </form>
             </div>
         </nav>
     </div>
-    <div class="container" style="padding-top: 20px">
-        <div class="row" id="yourprofile">
+    <div class="container" style="padding-top: 70px">
+        <div class="row" style="padding-top: 25px">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Your Profile</h4>
+                                <h4 id="hello"></h4>
                                 <hr>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <form>
-                                    <div class="form-group row">
-                                        <label for="username" class="col-4 col-form-label">User Name</label>
-                                        <div class="col-8">
-                                            <input id="username" name="username" placeholder="Username" class="form-control here"
-                                                required="required" type="text">
-                                        </div>
+                                <div class="form-group row">
+                                    <label for="name" class="col-4 col-form-label">Name</label>
+                                    <div class="col-8">
+                                        <p id="name"></p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="name" class="col-4 col-form-label">First Name</label>
-                                        <div class="col-8">
-                                            <input id="name" name="name" placeholder="First Name" class="form-control here"
-                                                type="text">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Email</label>
+                                    <div class="col-8">
+                                        <p id="email"></p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="lastname" class="col-4 col-form-label">Last Name</label>
-                                        <div class="col-8">
-                                            <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here"
-                                                type="text">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="address" class="col-4 col-form-label">Address</label>
+                                    <div class="col-8">
+                                        <p id="address"></p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="email" class="col-4 col-form-label">Email</label>
-                                        <div class="col-8">
-                                            <input id="email" name="email" placeholder="Email" class="form-control here"
-                                                required="required" type="text">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="zipcode" class="col-4 col-form-label">ZipCode</label>
+                                    <div class="col-8">
+                                        <p id="zipcode"></p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="website" class="col-4 col-form-label">Address</label>
-                                        <div class="col-8">
-                                            <input id="address" name="address" placeholder="Address" class="form-control here"
-                                                type="text">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="phone" class="col-4 col-form-label">Phone</label>
+                                    <div class="col-8">
+                                        <p id="phone"></p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="publicinfo" class="col-4 col-form-label">Bio</label>
-                                        <div class="col-8">
-                                            <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="birthdate" class="col-4 col-form-label">Birthdate</label>
+                                    <div class="col-8">
+                                        <p id="birthdate"></p>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="newpass" class="col-4 col-form-label">New Password</label>
-                                        <div class="col-8">
-                                            <input id="newpass" name="newpass" placeholder="New Password" class="form-control here"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row" id="reimbursements">
-                                        <label for="newpass" class="col-4 col-form-label">Confrim New Password</label>
-                                        <div class="col-8">
-                                            <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirm New Password"
-                                                class="form-control here" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-4 col-8">
-                                            <button name="submit" type="submit" class="btn btn-primary">Update My
-                                                Profile</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
 
@@ -133,7 +114,21 @@
             </div>
         </div>
         <div class="row" style="padding-top: 25px">
-            <div class="col-md-12" id="editprofile">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>My Reimbursements</h4>
+                            </div>
+                            <div id="list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 25px">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -144,73 +139,47 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <form>
+                                <form action="Account" method="POST">
                                     <div class="form-group row">
-                                        <label for="username" class="col-4 col-form-label">User Name</label>
+                                        <label for="employeeId" class="col-4 col-form-label">Employee ID</label>
                                         <div class="col-8">
-                                            <input id="username" name="username" placeholder="Username" class="form-control here"
+                                            <input id="employeeId" name="employeeId" placeholder="Employee ID" class="form-control here"
                                                 required="required" type="text">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="name" class="col-4 col-form-label">First Name</label>
+                                        <label for="type of reimbursement" class="col-4 col-form-label">Type of
+                                            Reimbursement</label>
                                         <div class="col-8">
-                                            <input id="name" name="name" placeholder="First Name" class="form-control here"
+                                            <input id="type" name="type" placeholder="Type of Reimbursement" class="form-control here"
                                                 type="text">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                        <label for="amount" class="col-4 col-form-label">Total</label>
                                         <div class="col-8">
-                                            <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here"
-                                                type="text">
+                                            <input id="amount" name="amount" placeholder="Total" class="form-control here"
+                                                type="number">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email" class="col-4 col-form-label">Email</label>
+                                        <label for="description" class="col-4 col-form-label">Description</label>
                                         <div class="col-8">
-                                            <input id="email" name="email" placeholder="Email" class="form-control here"
-                                                required="required" type="text">
+                                            <textarea id="description" name="description" cols="40" rows="4" class="form-control"
+                                                placeholder="Description"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="website" class="col-4 col-form-label">Address</label>
+                                        <label for="image" class="col-4 col-form-label">Image</label>
                                         <div class="col-8">
-                                            <input id="address" name="address" placeholder="Address" class="form-control here"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="website" class="col-4 col-form-label">ZipCode</label>
-                                        <div class="col-8">
-                                            <input id="zipcode" name="ZipCode" placeholder="ZipCode" class="form-control here"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="publicinfo" class="col-4 col-form-label">Bio</label>
-                                        <div class="col-8">
-                                            <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="newpass" class="col-4 col-form-label">New Password</label>
-                                        <div class="col-8">
-                                            <input id="newpass" name="newpass" placeholder="New Password" class="form-control here"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row" id="editprofile">
-                                        <label for="newpass" class="col-4 col-form-label">Confrim New Password</label>
-                                        <div class="col-8">
-                                            <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirm New Password"
-                                                class="form-control here" type="text">
+                                            <input id="image" name="image" placeholder="Image" class="form-control here"
+                                                type="file">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-4 col-8">
-                                            <button name="submit" type="submit" class="btn btn-primary">Update My
-                                                Profile</button>
+                                            <button name="submit" type="submit" class="btn btn-primary">Request
+                                                Reimbursement</button>
                                         </div>
                                     </div>
                                 </form>
@@ -222,7 +191,7 @@
             </div>
         </div>
         <div class="row" style="padding-top: 25px">
-            <div class="col-md-12" id="editprofile">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -235,27 +204,6 @@
                             <div class="col-md-12">
                                 <form>
                                     <div class="form-group row">
-                                        <label for="username" class="col-4 col-form-label">User Name</label>
-                                        <div class="col-8">
-                                            <input id="username" name="username" placeholder="Username" class="form-control here"
-                                                required="required" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="name" class="col-4 col-form-label">First Name</label>
-                                        <div class="col-8">
-                                            <input id="name" name="name" placeholder="First Name" class="form-control here"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="lastname" class="col-4 col-form-label">Last Name</label>
-                                        <div class="col-8">
-                                            <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
                                         <label for="email" class="col-4 col-form-label">Email</label>
                                         <div class="col-8">
                                             <input id="email" name="email" placeholder="Email" class="form-control here"
@@ -277,23 +225,24 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="publicinfo" class="col-4 col-form-label">Bio</label>
+                                        <label for="phone" class="col-4 col-form-label">Phone</label>
                                         <div class="col-8">
-                                            <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                                            <input id="phone" name="phone" placeholder="Phone" class="form-control here"
+                                                type="text">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="newpass" class="col-4 col-form-label">New Password</label>
                                         <div class="col-8">
                                             <input id="newpass" name="newpass" placeholder="New Password" class="form-control here"
-                                                type="text">
+                                                type="text" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.confirmnewpass.pattern = this.value;">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="newpass" class="col-4 col-form-label">Confrim New Password</label>
+                                        <label for="newpass" class="col-4 col-form-label">Confirm New Password</label>
                                         <div class="col-8">
                                             <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirm New Password"
-                                                class="form-control here" type="text">
+                                                class="form-control here" type="text" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -311,17 +260,12 @@
             </div>
         </div>
     </div>
-    <!-- FOOTER -->
     <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
         <p>© 2018 Decent Games Company, Inc. · <a href="#">Terms</a></p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+
 </body>
+
 
 </html>

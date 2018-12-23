@@ -14,23 +14,24 @@ import beans.Credentials;
 import beans.Employee;
 import services.AuthenticationService;
 
-@WebServlet("/Store")
-public class Store extends HttpServlet {
+@WebServlet("/FAQ")
+public class FAQ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	AuthenticationService authService = new AuthenticationService();
 
-	public Store() {
+	public FAQ() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
-		if (session == null) {
-			req.getRequestDispatcher("HTML/Store.html").forward(req, resp);
+		if(session == null) {
+			req.getRequestDispatcher("HTML/FAQ.html").forward(req,resp);
 		} else {
-			resp.sendRedirect("LStore");
+			resp.sendRedirect("LFAQ");
 		}
+		
 
 	}
 
@@ -55,10 +56,10 @@ public class Store extends HttpServlet {
 			session.setAttribute("zipcode", e.getZipcode());
 			session.setAttribute("email", e.getEmail());
 			session.setAttribute("phone", e.getPhone());
-			resp.sendRedirect("Store");
+			resp.sendRedirect("FAQ");
 		} else {
 			session.invalidate();
-			resp.sendRedirect("Store");
+			resp.sendRedirect("FAQ");
 		}
 
 	}

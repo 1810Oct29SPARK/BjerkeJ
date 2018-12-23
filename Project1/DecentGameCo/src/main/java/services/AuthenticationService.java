@@ -20,12 +20,10 @@ public class AuthenticationService {
 		String password = credentials.getPassword();
 		Credentials cl = c.login(username, password);
 		int id = cl.getEmployeeId();
-		System.out.println(id);
 		Employee empl = null;
 		if (username != null && password != null) {
 			if (username.equals(cl.getUsername()) && password.equals(cl.getPassword())) {
 				empl =  e.getEmployee(id);
-				System.out.println(empl);
 			}
 		}
 		return empl;

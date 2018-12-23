@@ -26,12 +26,11 @@ public class Studio extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
-		if(session == null) {
-			req.getRequestDispatcher("HTML/Studios.html").forward(req,resp);
+		if (session == null) {
+			req.getRequestDispatcher("HTML/Studios.html").forward(req, resp);
 		} else {
 			resp.sendRedirect("LStudios");
 		}
-		
 
 	}
 
@@ -47,12 +46,19 @@ public class Studio extends HttpServlet {
 			session.setAttribute("employeeId", e.getEmployeeId());
 			session.setAttribute("firstname", e.getFirstname());
 			session.setAttribute("lastname", e.getLastname());
+			session.setAttribute("middleInitial", e.getMiddleInitial());
+			session.setAttribute("title", e.getTitle());
+			session.setAttribute("authLevel", e.getAuthLevel());
+			session.setAttribute("directManager", e.getDirectManager());
+			session.setAttribute("birthdate", e.getBirthdate());
+			session.setAttribute("address", e.getAddress());
+			session.setAttribute("zipcode", e.getZipcode());
 			session.setAttribute("email", e.getEmail());
-			session.setAttribute("problem", null);
-			resp.sendRedirect("Studio");
+			session.setAttribute("phone", e.getPhone());
+			resp.sendRedirect("Studios");
 		} else {
-			session.setAttribute("problem", "invalid credentials");
-			resp.sendRedirect("Studio");
+			session.invalidate();
+			resp.sendRedirect("Studios");
 //			PrintWriter pw = resp.getWriter();
 //			pw.println("<script type=\"text/javascript\">");
 //			pw.println("window.alert('Incorrect Username and/or Password')");

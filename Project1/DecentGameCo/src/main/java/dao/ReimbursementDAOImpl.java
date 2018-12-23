@@ -3,15 +3,12 @@ package dao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.*;
 import beans.Reimbursement;
@@ -34,11 +31,9 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				String description = rs.getString("DESCRIPTION");
 				Blob image = rs.getBlob("IMAGE");
 				double amount = rs.getDouble("AMOUNT");
-				Date dateSubmitted = rs.getDate("DATESUBMITTED");
-				Date dateApproved = rs.getDate("DATEAPPROVED");
+				String status = rs.getString("STATUS");
 
-				e1.add(new Reimbursement(reimbursementId, employeeId, type, description, image, amount, dateSubmitted,
-						dateApproved));
+				e1.add(new Reimbursement(reimbursementId, employeeId, type, description, image, amount, status));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,15 +43,15 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		return e1;
 	}
 
-	public Date checkReimbursementStatus(int x) {
-		Date r = null;
+	public String checkReimbursementStatus(int x) {
+		String r = "";
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "SELECT DATEAPROVED FROM REIMBURSEMENTS WHERE REIMBURSEMENTID = ?";
+			String sql = "SELECT STATUS FROM REIMBURSEMENTS WHERE REIMBURSEMENTID = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, x);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				r = rs.getDate("DATEAPROVED");
+				r = rs.getString("STATUS");
 				System.out.println(r);
 			}
 		} catch (SQLException e) {
@@ -67,14 +62,17 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		return r;
 	}
 
-	public void updateReimbursement(int employeeId, String type, String description, Blob image, Double amount) {
+	public void updateReimbursement(int employeeId, String type, String description, String image, Double amount) {
+		String location = image;
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
+			File blob = new File(location);
+			FileInputStream in = new FileInputStream(blob);
 			String sql = "UPDATE REIMBURSEMENTS SET EMPLOYEEID = ?, SET TYPE = ?, DESCRIPTION = ?, SET IMAGE = ?, SET AMOUNT = ? WHERE REIMBURSEMENTID = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, employeeId);
 			stmt.setString(2, type);
 			stmt.setString(3, description);
-			stmt.setBlob(4, image);
+			stmt.setBinaryStream(4, in);
 			stmt.setDouble(5, amount);
 			stmt.executeQuery();
 			System.out.println("Successfully updated");
@@ -101,13 +99,24 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 	@Override
 	public void approveReimbursement(int x) {
-		LocalDate today = LocalDate.now();
-		String date = today.toString();
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "UPDATE REIMBURSEMENTS SET DATEAPROVED = ? WHERE REIMBURSEMENTID = ?";
+			String sql = "UPDATE REIMBURSEMENTS SET STATUS = 'Approved' WHERE REIMBURSEMENTID = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, date);
-			stmt.setInt(2, x);
+			stmt.setInt(1, x);
+			stmt.executeQuery();
+			System.out.println("Successfully approved");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void denyReimbursement(int x) {
+		try (Connection con = ConnectionUtil.getConnection(filename)) {
+			String sql = "UPDATE REIMBURSEMENTS SET STATUS = 'Denied' WHERE REIMBURSEMENTID = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, x);
 			stmt.executeQuery();
 			System.out.println("Successfully approved");
 		} catch (SQLException e) {
@@ -118,21 +127,20 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	}
 
 	@Override
-	public void addNewReimbursement(int employeeId, String type, String description, Blob image, double amount) {
-		LocalDate today = LocalDate.now();
-		String date = today.toString();
-		String location = image.toString();
+	public void addNewReimbursement(int employeeId, String type, String description, String image, double amount) {
+		String location = image;
+		String pending = "Pending";
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			File blob = new File(location);
-			FileInputStream in = new FileInputStream(blob);
-			String sql = "INSERT INTO REIMBURSEMENTS(EMPLOYEEID, TYPE, DESCRIPTION, IMAGE, AMOUNT, DATESUBMITTED) VALUES (?, ?, ?, ?, ?, ?)";
+//			File blob = new File(location);
+//			FileInputStream in = new FileInputStream(blob);
+			String sql = "INSERT INTO REIMBURSEMENTS(EMPLOYEEID, TYPE, DESCRIPTION, AMOUNT, STATUS) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, employeeId);
 			stmt.setString(2, type);
 			stmt.setString(3, description);
-			stmt.setBinaryStream(4, in);
-			stmt.setDouble(5, amount);
-			stmt.setString(6, date);
+//			stmt.setBinaryStream(4, in);
+			stmt.setDouble(4, amount);
+			stmt.setString(5, pending);
 			stmt.executeQuery();
 			System.out.println("Successfully added");
 		} catch (SQLException e) {

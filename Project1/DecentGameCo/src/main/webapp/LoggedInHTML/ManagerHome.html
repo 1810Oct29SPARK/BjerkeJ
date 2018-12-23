@@ -1,14 +1,273 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>DecentGames.Home</title>
+    <title>DecentGames.ManagerHome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" tyle="text/css" href="CCS.css">
+
 </head>
+
 <body>
-    
+    <div class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="Home">Decent Games Co</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="LHome">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LStore">Store</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LStudios">Studios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LAbout">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LFAQ">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Account">Account</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Manager">Managers <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="SignOut" method="GET">
+                    <button class="btn btn-outline-light my-2 my-sm-2 text-white" type="submit" data-toggle="tooltip"
+                        data-placement="bottom" value="submit" title="Log Out">Log Out</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <p id="reimbursements"></p>
+    <div class="container" style="padding-top: 70px">
+        <div class="row" style="padding-top: 25px">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 id="hello"></h4>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label for="employeeId" class="col-4 col-form-label">Employee ID</label>
+                                    <div class="col-8">
+                                        <p name="employeeId" id="employeeId"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="type" class="col-4 col-form-label">Type</label>
+                                    <div class="col-8">
+                                        <p name="type" id="type"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Description" class="col-4 col-form-label">Description</label>
+                                    <div class="col-8">
+                                        <p name="description" id="description"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="amount" class="col-4 col-form-label">Amount</label>
+                                    <div class="col-8">
+                                        <p name="amount" id="amount"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="status" class="col-4 col-form-label">Status</label>
+                                    <div class="col-8">
+                                        <p name="status" id="status"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="approve" type="submit" class="btn btn-primary">Approve</button>
+                                        <button name="deny" type="submit" class="btn btn-primary">Deny</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 25px">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Add Employee</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="Manager" method="POST">
+                                <div class="form-group row">
+                                    <label for="firstname" class="col-4 col-form-label">First Name</label>
+                                    <div class="col-8">
+                                        <input id="firstname" name="firstname" placeholder="First Name" class="form-control here"
+                                            required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                    <div class="col-8">
+                                        <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here"
+                                            required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="initial" class="col-4 col-form-label">Middle Initial</label>
+                                    <div class="col-8">
+                                        <input id="middleInitial" name="middleInitial" placeholder="Middle Initial"
+                                            class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="title" class="col-4 col-form-label">Title</label>
+                                    <div class="col-8">
+                                        <input id="title" name="title" placeholder="Title" class="form-control here"
+                                            required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="authLevel" class="col-4 col-form-label">Authorization Level</label>
+                                    <div class="col-8">
+                                        <input id="authLevel" name="authLevel" placeholder="Authorization Level" class="form-control here"
+                                            required="required" type="number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="directmanager" class="col-4 col-form-label">Direct Manager</label>
+                                    <div class="col-8">
+                                        <input id="directManager" name="directManager" placeholder="Direct Manager"
+                                            class="form-control here" required="required" type="number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="birthdate" class="col-4 col-form-label">Birthdate</label>
+                                    <div class="col-8">
+                                        <input id="birthdate" name="birthdate" placeholder="Birthdate" class="form-control here"
+                                            required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="address" class="col-4 col-form-label">Address</label>
+                                    <div class="col-8">
+                                        <input id="address" name="address" placeholder="Address" class="form-control here"
+                                            required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="website" class="col-4 col-form-label">ZipCode</label>
+                                    <div class="col-8">
+                                        <input id="zipcode" name="zipcode" placeholder="ZipCode" class="form-control here"
+                                            type="number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">Email</label>
+                                    <div class="col-8">
+                                        <input id="email" name="email" placeholder="Email" class="form-control here"
+                                            required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="phone" class="col-4 col-form-label">Phone</label>
+                                    <div class="col-8">
+                                        <input id="phone" name="phone" placeholder="Phone" class="form-control here"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Add Employee</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 25px">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Add Employee Credentials</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="AddCred method=" POST">
+                                <div class="form-group row">
+                                    <label for="employeeId" class="col-4 col-form-label">Employee ID</label>
+                                    <div class="col-8">
+                                        <input id="employeeId" name="employeeId" placeholder="Employee ID" class="form-control here"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">Username</label>
+                                    <div class="col-8">
+                                        <input id="username" name="username" placeholder="Username" class="form-control here"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="newpass" class="col-4 col-form-label">Password</label>
+                                    <div class="col-8">
+                                        <input id="newpass" name="newpass" placeholder="Password" class="form-control here"
+                                            type="text" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.confirmnewpass.pattern = this.value;">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="newpass" class="col-4 col-form-label">Confirm Password</label>
+                                    <div class="col-8">
+                                        <input id="confirmnewpass" name="confirmnewpass" placeholder="Confirm Password"
+                                            class="form-control here" type="text" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Add Employee
+                                            Credentials</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Reimburse.js"></script>
 </body>
+
 </html>

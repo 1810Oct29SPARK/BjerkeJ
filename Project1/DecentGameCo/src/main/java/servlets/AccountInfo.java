@@ -13,24 +13,31 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Employee;
 
-@WebServlet("/session")
-public class Session extends HttpServlet {
+@WebServlet("/AccountInfo")
+public class AccountInfo extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// grab current session, if it exists
 		response.setContentType("application/json");
 		HttpSession session = request.getSession(false);
 		if (session != null && session.getAttribute("firstname") != null) {
 			try {
-				int userId = Integer.parseInt(session.getAttribute("employeeId").toString());
+				int employeeId = Integer.parseInt(session.getAttribute("employeeId").toString());
 				String firstname = session.getAttribute("firstname").toString();
 				String lastname = session.getAttribute("lastname").toString();
+				String middleInitial = session.getAttribute("middleInitial").toString();
+				String title = session.getAttribute("title").toString();
+				int authLevel = Integer.parseInt(session.getAttribute("authLevel").toString());
+				int directManager = Integer.parseInt(session.getAttribute("directManager").toString());
+				String birthdate = session.getAttribute("birthdate").toString();
+				String address = session.getAttribute("address").toString();
+				int zipcode = Integer.parseInt(session.getAttribute("zipcode").toString());
 				String email = session.getAttribute("email").toString();
-				Employee e = new Employee(userId, firstname, lastname, email);
+				String phone = session.getAttribute("phone").toString();
+				Employee e = new Employee(employeeId, firstname, lastname, middleInitial, title, authLevel, directManager, birthdate, address, zipcode, email, phone);
 				response.getWriter().write((new ObjectMapper()).writeValueAsString(e));
 			} catch (Exception e) {
 				e.printStackTrace();

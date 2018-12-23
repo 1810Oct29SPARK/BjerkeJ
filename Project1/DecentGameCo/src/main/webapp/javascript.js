@@ -1,12 +1,12 @@
-let employee = {};
+let e = {};
 
 window.onload = function(){
-	populateEmployee();
+	AccountInfo();
 }
 
-function populateUser(){
+function AccountInfo(){
 	//send a GET request to localhost:7001/SessionMgmtDemo/session
-	fetch("http://localhost:7001/DecentGameCo/session").then(function(response) {
+	fetch("http://localhost:7001/DecentGameCo/AccountInfo").then(function(response) {
 		return response.json();
 	}).then(function(data){
 		//check whether there was a valid session returned
@@ -16,15 +16,14 @@ function populateUser(){
 			window.location = "http://localhost:7001/DecentGameCo/Home";
 		} else {
 			//define behavior for user returned
-			employee = data;
-			document.getElementById("employeeId").innerText = "Employee ID: "+employee.employeeId;
-			document.getElementById("firstname").innerText = "First name: "+employee.firstname;
-			document.getElementById("lastname").innerText = "Last name: "+employee.lastname;
-			document.getElementById("email").innerText = "Email: "+employee.email;
+			e = data;
+			document.getElementById("name").innerText = e.firstname + " " + e.lastname;
+			document.getElementById("email").innerText = e.email;
+			document.getElementById("address").innerText = e.address; 
+			document.getElementById("zipcode").innerText = e.zipcode;
+			document.getElementById("phone").innerText = e.phone;
+			document.getElementById("birthdate").innerText = e.birthdate;
+			document.getElementById("hello").innerText = "Hello " +  e.firstname + "!";
 		}
 	});
-	
-
-	
-	
 }

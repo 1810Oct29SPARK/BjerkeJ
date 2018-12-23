@@ -3,13 +3,14 @@ package beans;
 public class Employee {
 
 	public Employee(int employeeId, String firstname, String lastname, String middleInitial, String title,
-			int directManager, String birthdate, String address, int zipcode, String email, String phone) {
+			int authLevel, int directManager, String birthdate, String address, int zipcode, String email, String phone) {
 		super();
 		this.employeeId = employeeId;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.middleInitial = middleInitial;
 		this.title = title;
+		this.setAuthLevel(authLevel);
 		this.directManager = directManager;
 		this.birthdate = birthdate;
 		this.address = address;
@@ -26,6 +27,21 @@ public class Employee {
 		this.email = email;
 	}
 	
+	public Employee(int employeeId, String firstname, String lastname, String middleInitial, String title, String birthdate, String address, int zipcode, String email, String phone) {
+		super();
+		this.employeeId = employeeId;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.middleInitial = middleInitial;
+		this.title = title;
+		this.birthdate = birthdate;
+		this.address = address;
+		this.zipcode = zipcode;
+		this.email = email;
+		this.phone = phone;
+		
+	}
+	
 	public Employee() {
 		super();
 	}
@@ -35,6 +51,7 @@ public class Employee {
 	private String lastname;
 	private String middleInitial;
 	private String title;
+	private int authLevel;
 	private int directManager;
 	private String birthdate;
 	private String address;
@@ -136,6 +153,14 @@ public class Employee {
 				+ ", middleInitial=" + middleInitial + ", title=" + title + ", directManager=" + directManager
 				+ ", birthdate=" + birthdate + ", address=" + address + ", zipcode=" + zipcode + ", email=" + email
 				+ ", phone=" + phone + "]";
+	}
+
+	public int getAuthLevel() {
+		return authLevel;
+	}
+
+	public void setAuthLevel(int authLevel) {
+		this.authLevel = authLevel;
 	}
 
 }

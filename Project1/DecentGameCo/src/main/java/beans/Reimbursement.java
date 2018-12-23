@@ -6,7 +6,7 @@ import java.util.Date;
 public class Reimbursement {
 
 	public Reimbursement(int reimbursementId, int employeeId, String type, String description, Blob image,
-			double amount, Date dateSubmitted, Date dateApproved) {
+			double amount, String status) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.employeeId = employeeId;
@@ -14,8 +14,7 @@ public class Reimbursement {
 		this.description = description;
 		this.image = image;
 		this.amount = amount;
-		this.dateSubmitted = dateSubmitted;
-		this.dateApproved = dateApproved;
+		this.status = status;
 	}
 
 	private int reimbursementId;
@@ -24,8 +23,7 @@ public class Reimbursement {
 	private String description;
 	private Blob image;
 	private double amount;
-	private Date dateSubmitted;
-	private Date dateApproved;
+	private String status;
 
 	public int getReimbursementId() {
 		return reimbursementId;
@@ -75,27 +73,19 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public Date getDateSubmitted() {
-		return dateSubmitted;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setDateSubmitted(Date dateSubmitted) {
-		this.dateSubmitted = dateSubmitted;
-	}
-
-	public Date getDateApproved() {
-		return dateApproved;
-	}
-
-	public void setDateApproved(Date dateApproved) {
-		this.dateApproved = dateApproved;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
 		return "Reimbursement [reimbursementId=" + reimbursementId + ", employeeId=" + employeeId + ", type=" + type
-				+ ", description=" + description + ", image=" + image + ", amount=" + amount + ", dateSubmitted="
-				+ dateSubmitted + ", dateApproved=" + dateApproved + "]";
+				+ ", description=" + description + ", image=" + image + ", amount=" + amount + ", status=" + status
+				+ "]";
 	}
 
 }

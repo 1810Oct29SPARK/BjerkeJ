@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import beans.Credentials;
 import beans.Employee;
@@ -44,11 +45,18 @@ public class Home extends HttpServlet {
 			session.setAttribute("employeeId", e.getEmployeeId());
 			session.setAttribute("firstname", e.getFirstname());
 			session.setAttribute("lastname", e.getLastname());
+			session.setAttribute("middleInitial", e.getMiddleInitial());
+			session.setAttribute("title", e.getTitle());
+			session.setAttribute("authLevel", e.getAuthLevel());
+			session.setAttribute("directManager", e.getDirectManager());
+			session.setAttribute("birthdate", e.getBirthdate());
+			session.setAttribute("address", e.getAddress());
+			session.setAttribute("zipcode", e.getZipcode());
 			session.setAttribute("email", e.getEmail());
-			session.setAttribute("problem", null);
+			session.setAttribute("phone", e.getPhone());
 			resp.sendRedirect("LHome");
 		} else {
-			session.setAttribute("problem", "invalid credentials");
+			session.invalidate();
 			resp.sendRedirect("Home");
 		}
 
