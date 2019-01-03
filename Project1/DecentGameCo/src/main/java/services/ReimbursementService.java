@@ -15,8 +15,6 @@ public class ReimbursementService {
 
 	public List<Reimbursement> reimbursementList() {
 		List<Reimbursement> r1 = r.getReimbursements();
-		System.out.println(r1);
-		
 		return r1;
 	}
 }

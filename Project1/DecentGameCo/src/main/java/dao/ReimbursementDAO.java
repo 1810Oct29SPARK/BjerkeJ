@@ -1,7 +1,5 @@
 package dao;
 
-import java.sql.Blob;
-import java.util.Date;
 import java.util.List;
 
 import beans.Reimbursement;
@@ -9,6 +7,7 @@ import beans.Reimbursement;
 public interface ReimbursementDAO {
 
 	public List<Reimbursement> getReimbursements();
+	public List<Reimbursement> MyReimbursements(int x);
 	public void addNewReimbursement(int employeeId, String type, String description, String image, double amount);
 	public void approveReimbursement(int x);
 	public void denyReimbursement(int x);

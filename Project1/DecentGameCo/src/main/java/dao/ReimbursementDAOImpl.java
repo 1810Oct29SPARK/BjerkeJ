@@ -42,6 +42,30 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		}
 		return e1;
 	}
+	public List<Reimbursement> MyReimbursements(int x) {
+		List<Reimbursement> e1 = new ArrayList<Reimbursement>();
+		try (Connection con = ConnectionUtil.getConnection(filename)) {
+			String sql = "SELECT * FROM REIMBURSEMENTS WHERE EMPLOYEEID = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, x);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				int reimbursementId = rs.getInt("REIMBURSEMENTID");
+				String type = rs.getString("TYPE");
+				String description = rs.getString("DESCRIPTION");
+//				Blob image = rs.getBlob("IMAGE");
+				double amount = rs.getDouble("AMOUNT");
+				String status = rs.getString("STATUS");
+
+				e1.add(new Reimbursement(reimbursementId, type, description, amount, status));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return e1;
+	}
 
 	public String checkReimbursementStatus(int x) {
 		String r = "";
@@ -118,7 +142,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, x);
 			stmt.executeQuery();
-			System.out.println("Successfully approved");
+			System.out.println("Successfully denied");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

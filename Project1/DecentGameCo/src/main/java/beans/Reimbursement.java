@@ -16,6 +16,15 @@ public class Reimbursement {
 		this.amount = amount;
 		this.status = status;
 	}
+	public Reimbursement(int reimbursementId, String type, String description,
+			double amount, String status) {
+		super();
+		this.reimbursementId = reimbursementId;
+		this.type = type;
+		this.description = description;
+		this.amount = amount;
+		this.status = status;
+	}
 
 	private int reimbursementId;
 	private int employeeId;

@@ -120,7 +120,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public void addNewEmployee(String firstName, String lastName, String middleInitial, String title, int authLevel, int directManager,
 			String birthdate, String address, int zipcode, String email, String phone) {
 		try (Connection con = ConnectionUtil.getConnection(filename)) {
-			String sql = "INSERT INTO EMPLOYEE(FIRSTNAME, LASTNAME, MIDDLEINITIAL, TITLE, DIRECTMANAGER, BIRTHDATE, ADDRESS, ZIPCODE, EMAIL, PHONE) VALUES"
+			String sql = "INSERT INTO EMPLOYEE(FIRSTNAME, LASTNAME, MIDDLEINITIAL, TITLE, AUTHLEVEL, DIRECTMANAGER, BIRTHDATE, ADDRESS, ZIPCODE, EMAIL, PHONE) VALUES"
 					+ " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, firstName);
